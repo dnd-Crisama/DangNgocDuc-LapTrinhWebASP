@@ -40,6 +40,17 @@ namespace NguyenHoangNam.Controllers
                     ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
                     Session["TaiKhoan"] = kh;
                     Session["TenKH"] = kh.HoTen;
+                    if (collection["remember"].Contains("true"))
+                    {
+                        Response.Cookies["TenDN"].Value = sTenDN;
+                        Response.Cookies["MatKhau"].Value = sMatkhau;
+                        Response.Cookies["TenDN"].Expires = DateTime.Now.AddDays(1);
+                        Response.Cookies["MatKhau"].Expires = DateTime.Now.AddDays(1);
+                    }else
+                    {
+                        Response.Cookies["TenDN"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["MatKhau"].Expires = DateTime.Now.AddDays(-1);
+                    }
                 }
                 else
                 {

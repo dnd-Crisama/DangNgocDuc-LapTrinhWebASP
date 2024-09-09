@@ -21,7 +21,7 @@ namespace NguyenHoangNam
             String s = streamReader.ReadLine();
             streamReader.Close();
             Application.Add("HitCounter", s);
-            Application["HitCounter"] = 0;
+           //Application["HitCounter"] = 0;
             Application["Online"] = 0;
         }
         void Session_Start(object sender, EventArgs e)
