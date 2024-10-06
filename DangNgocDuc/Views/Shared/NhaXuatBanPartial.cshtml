@@ -1,0 +1,12 @@
+﻿@model IEnumerable<DangNgocDuc.Models.NHAXUATBAN>
+
+<ul class="list-group">
+    <li class="list-group-item active" style="font-weight:bold; text-align:center">SÁCH THEO NHÀ XUẤT BẢN</li>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+           <a href="~/DangNgocDuc/SachTheoNhaXuatBan?id=@item.MaNXB" class="list-group-item">@item.TenNXB</a>
+        }
+    }
+</ul>

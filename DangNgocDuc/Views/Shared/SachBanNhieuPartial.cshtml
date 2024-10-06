@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DangNgocDuc.Models.SACH>
+<div class="container">
+    <h2 class="text-center">SÁCH BÁN NHIỀU</h2>
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-6 col-md-6">
+            <div class="media-object-default">
+                <div class="media">
+                    <div class="media-left" style="padding-bottom: 20px;">
+                        <a href="#">
+                            <img class="media-object imgsachbannhieu" src="~/Images/@item.AnhBia" alt="placeholder image">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">@item.TenSach</h4>
+                        <div style="padding-top: 5px; min-height: 100px; max-height: 100px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; text-overflow: ellipsis;">
+                            @TruncateText(item.MoTa, 50)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@functions {
+
+    public static string TruncateText(string text, int wordLimit)
+    {
+        if (string.IsNullOrEmpty(text))
+        {
+            return text;
+        }
+        var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        if (words.Length <= wordLimit)
+        {
+            return text;
+        }
+        return string.Join(" ", words.Take(wordLimit)) + "...";
+    }
+}
